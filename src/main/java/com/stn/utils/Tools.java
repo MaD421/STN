@@ -1,5 +1,8 @@
 package com.stn.utils;
 
+import com.sun.management.OperatingSystemMXBean;
+
+import java.lang.management.ManagementFactory;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.Map;
@@ -139,6 +142,11 @@ public class Tools {
         }
 
         return html;
+    }
+
+    public double getSystemLoad() {
+        OperatingSystemMXBean osBean = ManagementFactory.getPlatformMXBean(OperatingSystemMXBean.class);
+        return Math.round(osBean.getSystemCpuLoad() *100);
     }
 
 }

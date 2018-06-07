@@ -37,6 +37,9 @@ public class UserHelper extends DBConnection{
             "bbcode_legend.jsp",
             "orar.jsp",
             "ora1.jsp",
+            "view_forum.jsp",
+            "topic.jsp",
+            "category.jsp",
             ""};
 
     private static final String[] modAcces = {

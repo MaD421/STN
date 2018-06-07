@@ -24,11 +24,11 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
             <td><br/>
 
                 <fieldset
-                        style='background-color: #2c2c2c; margin:auto; width: 93%; text-align: center; border: solid 1px #62635f'>
+                        style='background-color: #2c2c2c; margin:5pt; padding:3pt; width: 93%; text-align: center; border: solid 1px #62635f'>
                     <legend><b>Orar ${userdetails.getGrupa()}</b></legend>
                     <br/>
 
-                    <table style="width: 95%; margin-right: auto ; margin-left: auto ;">
+                    <table id="orar_table">
                         <tbody>
                         <c:if test="${userdetails.getUserClass() == 2||userdetails.getUserClass()==6||userdetails.getUserClass()==7}">
 
@@ -246,6 +246,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                             <div class="ui">${sessionScope.error}</div>
 
                         </c:if>
+                        <br/>
                     </table>
                 </fieldset>
             </td>
