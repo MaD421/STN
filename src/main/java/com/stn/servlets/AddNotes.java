@@ -75,7 +75,6 @@ public class AddNotes extends HttpServlet {
         String teme = request.getParameter("teme");
         String examen = request.getParameter("examen");
         Integer nota = Integer.valueOf(request.getParameter("nota"));
-
         OrarHelper addNotes = new OrarHelper();
         try {
             addNotes.updateNotes(id_ora, id_student, teme, examen, nota);

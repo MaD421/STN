@@ -121,7 +121,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                     </tfoot>
                 </table>
                 <br/>
-                <p>Site version : 0.2.2</p>
+                <p>Site version : 0.2.3</p>
                 <br/>
             </fieldset><br/>
 

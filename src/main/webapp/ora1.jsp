@@ -16,7 +16,6 @@
 <body>
 
 ${user.verifyAcces(pageContext.request,pageContext.response)}
-
 <c:if test="${note.getId()>0}">
 <form action="/AddNotes" method="post">
     <fieldset>
