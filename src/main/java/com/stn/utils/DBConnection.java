@@ -19,10 +19,10 @@ public class DBConnection {
 
     //Se utilizeaza pentru construirea unui query
     public DBConnection() {
-        this.dbHost = "165.227.172.85";
-        this.dbName = "stn_db";
-        this.dbUser = "MaD";
-        this.dbPassword = "super123#";
+        this.dbHost = "138.197.189.171";
+        this.dbName = "stn";
+        this.dbUser = "CristyBv";
+        this.dbPassword = "66k5RhAdtSDcffbH";
         this.dbPort = "3306";
         this.preparedStatement = null;
         this.connection = null;
