@@ -1,2 +1,3 @@
-target\*
+target/
+target\STN.war
 .idea\workspace.xml
