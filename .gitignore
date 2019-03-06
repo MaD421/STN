@@ -1,3 +1,5 @@
 target
 .idea/workspace.xml
 src/main/java/com/stn/utils/DBConnection.java
+.idea/vcs.xml
+.idea/misc.xml
