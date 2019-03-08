@@ -28,6 +28,7 @@ public class User {
     private String countryImage;
     private int anonymity;
     private int donor;
+    private int posts;
 
     public void setId(int id) {
         this.id = id;
@@ -125,6 +126,10 @@ public class User {
         this.donor = donor;
     }
 
+    public void setPosts(int posts) {
+        this.posts = posts;
+    }
+
     public int getId() {
         return id;
     }
@@ -219,5 +224,9 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public int getPosts() {
+        return posts;
     }
 }

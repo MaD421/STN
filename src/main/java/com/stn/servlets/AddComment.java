@@ -2,6 +2,7 @@ package com.stn.servlets;
 
 import com.stn.helpers.CommentsHelper;
 import com.stn.helpers.UserHelper;
+import com.stn.pojo.User;
 import com.stn.utils.Validator;
 
 import javax.servlet.ServletException;
@@ -21,8 +22,10 @@ public class AddComment extends HttpServlet {
         HttpSession session=request.getSession();
         PrintWriter out=response.getWriter();
         int idPost=Integer.parseInt(request.getParameter("idPost"));
+        int page = Integer.parseInt(request.getParameter("page"));
         int idUser=(int) session.getAttribute("userId");
         CommentsHelper commHelp=new CommentsHelper();
+        UserHelper userHelper = new UserHelper();
         String replyee=null;
         int reply_temp;
         try {
@@ -34,7 +37,7 @@ public class AddComment extends HttpServlet {
         }catch (Exception e){e.printStackTrace();
         replyee=null;}
         String error="";
-        String url="/topic.jsp?id="+idPost;
+        String url="/view_topic.jsp?id="+idPost+"&p="+page;
         String body=request.getParameter("body");
         CommentsHelper commentsHelper=new CommentsHelper();
 
@@ -45,6 +48,7 @@ public class AddComment extends HttpServlet {
             if(replyee!=null){
                 try {
                     commentsHelper.addReply(idPost,idUser,body,replyee);
+                    userHelper.updatePosts(idUser);
                 }catch (SQLException|ClassNotFoundException e){
                     out.println(e);
                 }
@@ -53,6 +57,7 @@ public class AddComment extends HttpServlet {
             if(idPost>0)
             try {
                 commentsHelper.addComment(idPost,idUser,body);
+                userHelper.updatePosts(idUser);
             }catch (SQLException|ClassNotFoundException e){
                 out.println(e);
             }

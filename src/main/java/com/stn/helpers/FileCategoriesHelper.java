@@ -1,6 +1,6 @@
 package com.stn.helpers;
 
-import com.stn.pojo.Country;
+import com.stn.pojo.FileCategory;
 import com.stn.utils.DBConnection;
 
 import java.sql.DriverManager;
@@ -8,12 +8,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CountryHelper extends DBConnection {
+public class FileCategoriesHelper extends DBConnection {
 
-    public List<Country> getCountries() throws ClassNotFoundException, SQLException {
-        List<Country> countries = new ArrayList<Country>();
+    public List<FileCategory> getFileCategories() throws ClassNotFoundException, SQLException {
+        List<FileCategory> categories = new ArrayList<FileCategory>();
 
-        query = "SELECT * FROM countries ORDER BY 2 ASC";
+        query = "SELECT * FROM files_categories ORDER BY 2 ASC";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -21,11 +21,11 @@ public class CountryHelper extends DBConnection {
             preparedStatement = connection.prepareStatement(query);
             resultSet = preparedStatement.executeQuery();
             while(resultSet.next()) {
-                Country country = new Country();
-                country.setCountryId(resultSet.getInt(1));
-                country.setCountryName(resultSet.getString(2));
-                country.setCountryImage(resultSet.getString(3));
-                countries.add(country);
+                FileCategory fileCategory = new FileCategory();
+                fileCategory.setFileCategoryId(resultSet.getInt(1));
+                fileCategory.setName(resultSet.getString(2));
+                fileCategory.setPicture(resultSet.getString(3));
+                categories.add(fileCategory);
             }
         } finally {
             if (preparedStatement != null)
@@ -34,7 +34,7 @@ public class CountryHelper extends DBConnection {
                 connection.close();
         }
 
-        return countries;
+        return categories;
     }
 
 }

@@ -198,6 +198,11 @@ img.profile {
     height: auto;
 }
 
+img.forum {
+    width: 60%;
+    height: auto;
+}
+
 a.accept:link {
     color: #7f7f7f;
     text-decoration: none;

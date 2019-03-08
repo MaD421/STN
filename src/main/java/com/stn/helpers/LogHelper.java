@@ -70,7 +70,7 @@ public class LogHelper extends DBConnection {
             connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1,"%"+text+"%");
-            preparedStatement.setInt(2,itemsPerPage*pageNumber);
+            preparedStatement.setInt(2,itemsPerPage * pageNumber - itemsPerPage);
             preparedStatement.setInt(3,itemsPerPage);
             resultSet = preparedStatement.executeQuery();
             while(resultSet.next()) {
@@ -94,7 +94,7 @@ public class LogHelper extends DBConnection {
     public int countLogs() throws ClassNotFoundException, SQLException {
         int cnt = 0;
 
-        query = "SELECT COUNT(*) FROM logs ";
+        query = "SELECT COUNT(*) FROM logs";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");

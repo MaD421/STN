@@ -31,7 +31,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                 </tr>
                 <c:forEach items="${topic}" var="t">
                     <tr>
-                    <td class='row2' style="text-align: left"><b><a class="ui" href='/topic.jsp?id=${t.getTopicId()}'>${t.getName()}</a></b></td>
+                    <td class='row2' style="text-align: left"><b><a class="ui" href='/view_topic.jsp?id=${t.getTopicId()}&p=1'>${t.getName()}</a></b></td>
                         <td class='row2' style="text-align: center">${t.getTotalposts()}</td>
                         <td class='row2' style="text-align: center"><a href='/userdetails.jsp?id=${t.getAuthorId()}' style="text-decoration: none"><b style="color: ${user.classColor(t.getAuthorClass())}">${e:forHtml(t.getAuthorName())}</b></a></td>
                     </tr>

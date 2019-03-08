@@ -53,6 +53,10 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                     <td class='row2' style="text-align: left">User Class</td>
                     <td class='row' style="text-align: left; color: ${user.classColor(userdetails.getUserClass())}">${user.className(userdetails.getUserClass())}</td>
                 </tr>
+                <tr>
+                    <td class='row2' style="text-align: left">Forums Class</td>
+                    <td class='row' style="text-align: left">${user.forumClassName(userdetails.getPosts())}</td>
+                </tr>
 
                 <c:if test="${userInfo.getUserClass() > 4 || userdetails.getAnonymity() == 0 || userdetails.getId() == userInfo.getId()}">
                     <tr>
@@ -99,7 +103,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                 </tr>
                 <tr>
                     <td class='row2' style="text-align: left">Forums Posts</td>
-                    <td class='row' style="text-align: left">0</td>
+                    <td class='row' style="text-align: left">${userdetails.getPosts()}</td>
                 </tr>
             </table>
         </td>

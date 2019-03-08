@@ -39,8 +39,13 @@ public class UserHelper extends DBConnection{
             "orar.jsp",
             "ora1.jsp",
             "view_forum.jsp",
-            "topic.jsp",
-            "category.jsp",
+            "view_topic.jsp",
+            "forums.jsp",
+            "search.jsp",
+            "files.jsp",
+            "add_file.jsp",
+            "view_file.jsp",
+            "edit_file.jsp",
             ""};
 
     private static final String[] modAcces = {
@@ -274,6 +279,31 @@ public class UserHelper extends DBConnection{
         return name;
     }
 
+    public static String forumClassName(int posts) {
+        String name = "";
+        if(posts < 10)
+            name = "Forum N00b";
+        else if(posts <= 99 )
+            name = "Forum N00b";
+        else if(posts <= 499)
+            name = "Forum Regular";
+        else if(posts <= 999)
+            name = "Forum Lover";
+        else if(posts <= 2499)
+            name = "Forum Addict";
+        else if(posts <= 4999)
+            name = "Forum Psychotic";
+        else if(posts <= 9999)
+            name = "Forum Whore";
+        else if(posts <= 24999)
+            name = "Forum Star";
+        else if(posts <= 49999)
+            name = "Forum Angel";
+        else
+            name = "Forum God";
+        return name;
+    }
+
     public static String genderImage(int gender) {
         String url = "";
         switch (gender) {
@@ -337,7 +367,7 @@ public class UserHelper extends DBConnection{
         String serie;
         String facultate;
 
-        query = "SELECT Username, Email, FirstName, LastName, JoinDate, LastSeen, Class, Avatar, Ip , g.Nume, s.Nume, f.Nume, u.IdGrupa, u.IdSerie, u.IdFacultate, Gender, c.CountryId , c.Name, c.Image, Anonymity, Donor " +
+        query = "SELECT Username, Email, FirstName, LastName, JoinDate, LastSeen, Class, Avatar, Ip , g.Nume, s.Nume, f.Nume, u.IdGrupa, u.IdSerie, u.IdFacultate, Gender, c.CountryId , c.Name, c.Image, Anonymity, Donor, Posts " +
                 "FROM users u LEFT JOIN grupe g ON u.IdGrupa = g.IdGrupa LEFT JOIN serii s ON u.IdSerie = s.IdSerie " +
                 "LEFT JOIN facultati f ON u.IdFacultate = f.IdFacultate " +
                 "LEFT JOIN countries c ON u.CountryId = c.CountryId " +
@@ -393,6 +423,7 @@ public class UserHelper extends DBConnection{
                 }
                 user.setAnonymity(resultSet.getInt(20));
                 user.setDonor(resultSet.getInt(21));
+                user.setPosts(resultSet.getInt(22));
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -505,6 +536,29 @@ public class UserHelper extends DBConnection{
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setTimestamp(1, date);
             preparedStatement.setInt(2,id);
+            preparedStatement.executeUpdate();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (preparedStatement != null)
+                    preparedStatement.close();
+                if (connection != null)
+                    connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void updatePosts(int id) {
+        query = "UPDATE users SET Posts = Posts + 1 WHERE Id = ?";
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1,id);
             preparedStatement.executeUpdate();
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

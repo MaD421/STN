@@ -30,6 +30,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
     <tr>
         <td class="center">
             <form method='get' action='logs.jsp'>
+                <input type="hidden" name="p" value="1">
             Search: <input type="text" name="search" style="width: 240px;">
                 <input type="submit" value="Search!">
             </form>
@@ -66,10 +67,10 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
             <br/>
             <c:choose>
                 <c:when test="${param.search == null}">
-                    ${tool.pager("logs.jsp",log.countLogs(),param.p,15)}
+                    ${tool.pager("logs.jsp",log.countLogs(),param.p,15,1)}
                 </c:when>
                 <c:when test="${param.search != null}">
-                    ${tool.pager("logs.jsp?search=".concat(param.search),log.countLogsbySearch(param.search),param.p,15)}
+                    ${tool.pager("logs.jsp?search=".concat(param.search),log.countLogsbySearch(param.search),param.p,15,2)}
                 </c:when>
             </c:choose>
 

@@ -9,20 +9,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CommentsHelper extends DBConnection {
-    public List<Comments> getComments(int idPost) throws ClassNotFoundException, SQLException {
+    public List<Comments> getComments(int idPost,int pageNumber) throws ClassNotFoundException, SQLException {
         List<Comments> comm = new ArrayList<Comments>();
+        int itemsPerPage = 25;
 
-
-            query = "SELECT n.Id,Continut,Data,IdPost,n.IdUser,Username,Class,LastEdit FROM comments n " +
-                    "JOIN users u ON u.Id = n.IdUser " +
-                    "WHERE n.IdPost = ? ORDER BY Data";
-
+        query = "SELECT n.Id,Continut,Data,IdPost,n.IdUser,Username,Class,LastEdit FROM comments n " +
+                "JOIN users u ON u.Id = n.IdUser " +
+                "WHERE n.IdPost = ? ORDER BY Data LIMIT ?,?";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1,idPost);
+            preparedStatement.setInt(2,itemsPerPage * pageNumber - itemsPerPage);
+            preparedStatement.setInt(3,itemsPerPage);
             resultSet = preparedStatement.executeQuery();
             while(resultSet.next()) {
                 Comments commtemp = new Comments();
@@ -44,6 +45,31 @@ public class CommentsHelper extends DBConnection {
         }
 
         return comm;
+    }
+
+    public int countComments(int idTopic) throws ClassNotFoundException, SQLException {
+        int cnt = 0;
+
+        query = "SELECT COUNT(*) FROM comments WHERE IdPost = ?";
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1,idTopic);
+            resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()) {
+                cnt = resultSet.getInt(1);
+            }
+        } finally {
+            if (preparedStatement != null)
+                preparedStatement.close();
+            if (connection != null)
+                connection.close();
+        }
+
+        return cnt;
+
     }
 
     public Comments getComment(Integer idComment)throws ClassNotFoundException, SQLException{

@@ -19,7 +19,7 @@ public class EditComment extends HttpServlet {
 
         String error = "";
         Integer idPost=Integer.parseInt(request.getParameter("idp"));
-        String url = "/topic.jsp?id="+idPost;
+        String url = "/view_topic.jsp?id="+idPost+"&p=1";
         response.setContentType("text/html");
         CommentsHelper commHelper = new CommentsHelper();
 
@@ -41,7 +41,7 @@ public class EditComment extends HttpServlet {
 
         String error = "";
         Integer idPost=Integer.parseInt(request.getParameter("comm_id_post_temp"));
-        String url = "/topic.jsp?id="+idPost;
+        String url = "/view_topic.jsp?id="+idPost+"&p=1";
         response.setContentType("text/html");
 
         UserHelper userHelper = new UserHelper();

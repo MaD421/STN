@@ -55,6 +55,37 @@ public class TopicHelper extends DBConnection {
         }
     }
 
+    public Topic getTopic(int id) throws ClassNotFoundException, SQLException {
+        Topic t = new Topic();
+
+        query = "SELECT TopicId,Name,GroupId,t.Author,u.Username,u.Class, (SELECT COUNT(*) FROM comments WHERE IdPost = TopicId)" +
+                " FROM topics t JOIN users u ON t.Author = u.Id  WHERE TopicId = ?";
+
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setInt(1, id);
+            resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            t.setTopicId(resultSet.getInt(1));
+            t.setName(resultSet.getString(2));
+            t.setGroupId(resultSet.getInt(3));
+            t.setAuthorId(resultSet.getInt(4));
+            t.setAuthorName(resultSet.getString(5));
+            t.setAuthorClass(resultSet.getInt(6));
+            t.setTotalposts(resultSet.getInt(7));
+        } finally {
+            if (preparedStatement != null)
+                preparedStatement.close();
+            if (connection != null)
+                connection.close();
+        }
+
+        return t;
+    }
+
     public List<Topic> getTopics(int catId) throws ClassNotFoundException, SQLException {
         List<Topic> topic = new ArrayList<Topic>();
 

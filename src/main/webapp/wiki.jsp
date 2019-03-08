@@ -63,6 +63,50 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                         <td style="background-color: #353535"><b style="color: #A83838">Owner</b></td>
                         <td>Fondatorii comunitatii.</td>
                     </tr>
+                </table><br/><br/>
+
+                <b>Care sunt clasele de utilizatori pentru forum?</b><br/><br/>
+                <table style="border-spacing: 2pt">
+                    <tr>
+                        <td style="background-color: #353535"><b>Forum N00b</b></td>
+                        <td>Member has less the 10 posts in the forums.</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #353535"><b>Forum User</b></td>
+                        <td>Member has between 10 and 99 posts in the forums.</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #353535"><b>Forum Regular</b></td>
+                        <td>Member has between 100 and 499 posts in the forums.</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #353535"><b>Forum Lover</b></td>
+                        <td>Member has between 500 and 999 posts in the forums.</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #353535"><b>Forum Addict</b></td>
+                        <td>Member has between 1000 and 2499 posts in the forums.</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #353535"><b>Forum Psychotic</b></td>
+                        <td>Member has between 2500 and 4999 posts in the forums.</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #353535"><b>Forum Whore</b></td>
+                        <td>Member has between 5000 and 9999 posts in the forums.</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #353535"><b>Forum Star</b></td>
+                        <td>Member has between 10000 and 24999 posts in the forums.</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #353535"><b>Forum Angel</b></td>
+                        <td>Member has between 25000 and 49999 posts in the forums.</td>
+                    </tr>
+                    <tr>
+                        <td style="background-color: #353535"><b>Forum God</b></td>
+                        <td>Member has 50000 or more posts in the forum, and is not a complete mentalist.</td>
+                    </tr>
                 </table>
             </fieldset><br/><br/>
 
@@ -111,6 +155,10 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                     </tr>
                     <tr>
                         <td class="row2">Files</td>
+                        <td class="row" style="color: #54bbbb">Beta</td>
+                    </tr>
+                    <tr>
+                        <td class="row2">Advanced Search</td>
                         <td class="row" style="color: #ff0026">TBD</td>
                     </tr>
                     </tbody>
@@ -121,7 +169,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                     </tfoot>
                 </table>
                 <br/>
-                <p>Site version : 0.2.8</p>
+                <p>Site version : 0.2.9</p>
                 <br/>
             </fieldset><br/>
 

@@ -1,6 +1,7 @@
 package com.stn.servlets;
 
 import com.stn.helpers.TopicHelper;
+import com.stn.helpers.UserHelper;
 import com.stn.utils.Validator;
 
 import javax.servlet.ServletException;
@@ -30,12 +31,14 @@ public class AddTopic extends HttpServlet {
         int group_id = Integer.parseInt(request.getParameter("group_id"));
         int idUser = (int) session.getAttribute("userId");
         TopicHelper topicHelper = new TopicHelper();
+        UserHelper userHelper = new UserHelper();
 
         if (Validator.isEmpty(title,body)) {
             error = "<br/><b style='color: #db5555; padding-top: 5pt'>You must fill all the requiered fields!</b>";
         } else {
             try {
                 topicHelper.addTopic(title,body,idUser,group_id);
+                userHelper.updatePosts(idUser);
             } catch (SQLException | ClassNotFoundException e) {
                 out.println(e);
             }

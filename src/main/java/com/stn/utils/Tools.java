@@ -33,6 +33,8 @@ public class Tools {
             s = new SimpleDateFormat("dd-MM-yyyy HH:mm").format(date);
         else if(type == 4)
             s = new SimpleDateFormat("dd-MM-yyyy").format(date);
+        else if(type == 5)
+            s = new SimpleDateFormat("HH:mm:ss").format(date);
         return s;
     }
 
@@ -132,7 +134,7 @@ public class Tools {
         bbMap.put("\\[align=(.+?)\\](.+?)\\[/align\\]", "<div style='text-align:$1'>$2</div>");
         bbMap.put("\\[color=(.+?)\\](.+?)\\[/color\\]", "<font color='$1'>$2</font>");
         bbMap.put("\\[size=(.+?)\\](.+?)\\[/size\\]", "<span style='font-size:$1pt'>$2</span>");
-        bbMap.put("\\[img\\](.+?)\\[/img\\]", "<img src='$1' />");
+        bbMap.put("\\[img\\](.+?)\\[/img\\]", "<img src='$1' style='max-width: 50%'/>");
         bbMap.put("\\[email\\](.+?)\\[/email\\]", "<a class='ui' href='mailto:$1' style='color: #66ba5b'>$1</a>");
         bbMap.put("\\[url\\](.+?)\\[/url\\]", "<a class='ui' href='$1' style='color: #99ccff' target='_blank'>$1</a>");
         bbMap.put("\\[url=(.+?)\\](.+?)\\[/url\\]", "<a class='ui' href='$1' style='color: #99ccff' target='_blank'>$2</a>");
@@ -152,7 +154,12 @@ public class Tools {
     }
 
 
-    public String pager(String page,int totalItems,int currentPage,int itemPerPage) {
+    public String pager(String page,int totalItems,int currentPage,int itemPerPage,int reqType) {
+        String symbol;
+        if(reqType == 1)
+            symbol = "?";
+        else
+            symbol = "&";
 
         int totalPages = totalItems / itemPerPage;
         int totalItems2 = totalItems - (totalPages * itemPerPage);
@@ -171,12 +178,12 @@ public class Tools {
             // Generare partea din stanga
             if(currentPage - 3 > 0) {
                 for(i=1;i<=3;i++) {
-                    html = html + "<a class='ui' href='"+ page + "?p=" + i + "'>" + (i * itemPerPage - itemPerPage + 1) + " - " + (i * itemPerPage) + "</a>";
+                    html = html + "<a class='ui' href='"+ page + symbol + "p=" + i + "'>" + (i * itemPerPage - itemPerPage + 1) + " - " + (i * itemPerPage) + "</a>";
                     html = html + spacer;
                 }
             } else {
                 for(i=1;i<currentPage;i++) {
-                    html = html + "<a class='ui' href='"+ page + "?p=" + i + "'>" + (i * itemPerPage - itemPerPage + 1) + " - " + (i * itemPerPage) + "</a>";
+                    html = html + "<a class='ui' href='"+ page + symbol + "p=" + i + "'>" + (i * itemPerPage - itemPerPage + 1) + " - " + (i * itemPerPage) + "</a>";
                     html = html + spacer;
                 }
             }
@@ -187,12 +194,12 @@ public class Tools {
                 }
 
                 for(i=currentPage-2;i<currentPage;i++) {
-                    html = html + "<a class='ui' href='"+ page + "?p=" + i + "'>" + (i * itemPerPage - itemPerPage + 1) + " - " + (i * itemPerPage) + "</a>";
+                    html = html + "<a class='ui' href='"+ page + symbol + "p=" + i + "'>" + (i * itemPerPage - itemPerPage + 1) + " - " + (i * itemPerPage) + "</a>";
                     html = html + spacer;
                 }
             } else {
                 for(i=4;i<currentPage;i++) {
-                    html = html + "<a class='ui' href='"+ page + "?p=" + i + "'>" + (i * itemPerPage - itemPerPage + 1) + " - " + (i * itemPerPage) + "</a>";
+                    html = html + "<a class='ui' href='"+ page + symbol + "p=" + i + "'>" + (i * itemPerPage - itemPerPage + 1) + " - " + (i * itemPerPage) + "</a>";
                     html = html + spacer;
                 }
             }
@@ -207,13 +214,13 @@ public class Tools {
             //Generarea partea din dreapta
             if(currentPage + 3 < totalPages) {
                 for(i=totalPages - 3;i<=totalPages;i++) {
-                    temp1 = temp1 + "<a class='ui' href='"+ page + "?p=" + i + "'>" + (i * itemPerPage - itemPerPage + 1) + " - " + (i * itemPerPage) + "</a>";
+                    temp1 = temp1 + "<a class='ui' href='"+ page + symbol + "p=" + i + "'>" + (i * itemPerPage - itemPerPage + 1) + " - " + (i * itemPerPage) + "</a>";
                     if(i != totalPages)
                     temp1 = temp1 + spacer;
                 }
             } else {
                 for(i=currentPage + 1;i<=totalPages;i++) {
-                    temp1 = temp1 + "<a class='ui' href='"+ page + "?p=" + i + "'>" + (i * itemPerPage - itemPerPage + 1) + " - " + (i * itemPerPage) + "</a>";
+                    temp1 = temp1 + "<a class='ui' href='"+ page + symbol + "p=" + i + "'>" + (i * itemPerPage - itemPerPage + 1) + " - " + (i * itemPerPage) + "</a>";
                     if(i != totalPages)
                     temp1 = temp1 + spacer;
                 }
@@ -221,7 +228,7 @@ public class Tools {
 
             if(currentPage + 5 < totalPages) {
                 for(i=currentPage+1;i<=currentPage+2;i++) {
-                    temp2 = temp2 + "<a class='ui' href='"+ page + "?p=" + i + "'>" + (i * itemPerPage - itemPerPage + 1) + " - " + (i * itemPerPage) + "</a>";
+                    temp2 = temp2 + "<a class='ui' href='"+ page + symbol + "p=" + i + "'>" + (i * itemPerPage - itemPerPage + 1) + " - " + (i * itemPerPage) + "</a>";
                     if(i != totalPages)
                     temp2 = temp2 + spacer;
                 }
@@ -231,7 +238,7 @@ public class Tools {
                 }
             } else {
                 for(i=currentPage + 1;i<=totalPages - 3;i++) {
-                    temp2 = temp2 + "<a class='ui' href='"+ page + "?p=" + i + "'>" + (i * itemPerPage - itemPerPage + 1) + " - " + (i * itemPerPage) + "</a>";
+                    temp2 = temp2 + "<a class='ui' href='"+ page + symbol + "p=" + i + "'>" + (i * itemPerPage - itemPerPage + 1) + " - " + (i * itemPerPage) + "</a>";
                     temp2 = temp2 + spacer;
                 }
             }
