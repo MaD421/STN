@@ -3,11 +3,12 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 08, 2019 at 08:06 AM
+-- Generation Time: Mar 10, 2019 at 02:26 PM
 -- Server version: 5.7.25-0ubuntu0.18.04.2
 -- PHP Version: 7.2.15-0ubuntu0.18.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -66,7 +67,7 @@ CREATE TABLE `comments` (
   `IdUser` int(11) NOT NULL,
   `Continut` text NOT NULL,
   `Data` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `LastEdit` date DEFAULT NULL
+  `LastEdit` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -113,6 +114,7 @@ CREATE TABLE `failed_logins` (
 
 CREATE TABLE `files` (
   `FileId` int(11) NOT NULL,
+  `Name` varchar(200) NOT NULL,
   `Description` text NOT NULL,
   `Link` varchar(300) NOT NULL,
   `Date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -277,7 +279,8 @@ CREATE TABLE `topics` (
   `TopicId` int(11) NOT NULL,
   `Name` varchar(150) NOT NULL,
   `GroupId` int(11) DEFAULT NULL,
-  `Author` int(11) DEFAULT NULL
+  `Author` int(11) DEFAULT NULL,
+  `Views` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -306,7 +309,8 @@ CREATE TABLE `users` (
   `Gender` int(1) NOT NULL DEFAULT '0',
   `CountryId` int(11) DEFAULT NULL,
   `Anonymity` int(1) NOT NULL DEFAULT '0',
-  `Donor` int(1) NOT NULL DEFAULT '0'
+  `Donor` int(1) NOT NULL DEFAULT '0',
+  `Posts` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -570,7 +574,7 @@ ALTER TABLE `categories`
 -- Constraints for table `comments`
 --
 ALTER TABLE `comments`
-  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`IdPost`) REFERENCES `topics` (`TopicId`);
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`IdPost`) REFERENCES `topics` (`TopicId`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `files`

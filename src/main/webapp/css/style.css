@@ -247,6 +247,12 @@ a.decline:active {
     vertical-align: bottom;
 }
 
+p.sub {
+    margin-bottom: -2pt;
+    margin-top: 0pt;
+    text-align: left;
+}
+
 /* Orar */
 
 a.buton{

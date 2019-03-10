@@ -2,7 +2,6 @@ package com.stn.helpers;
 
 import com.stn.pojo.Log;
 import com.stn.utils.DBConnection;
-
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;

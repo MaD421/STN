@@ -1,9 +1,6 @@
 package com.stn.utils;
 
 import javax.mail.internet.InternetAddress;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.regex.Matcher;
 
 public class Validator {

@@ -68,6 +68,18 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                 <td class='row' style="text-align: center">${tool.formatText('[img]http://schoolingtheinter.net/img/profile.png[/img]')}</td>
             </tr>
             <tr>
+                <td class='row2' style="text-align: center;">[quote]Simple quote[/quote]</td>
+                <td class='row' style="text-align: center">${tool.formatText('[quote]Simple quote[/quote]')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">[quote=Someone]User quote[/quote]</td>
+                <td class='row' style="text-align: center">${tool.formatText('[quote=Someone]User quote[/quote]')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">[youtube]Vs3981DoINw[/youtube]</td>
+                <td class='row' style="text-align: center">${tool.formatText('[youtube]Vs3981DoINw[/youtube]')}</td>
+            </tr>
+            <tr>
                 <td class='row2' style="text-align: center;">:)</td>
                 <td class='row' style="text-align: center">${tool.formatText(':)')}</td>
             </tr>
@@ -120,16 +132,124 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                 <td class='row' style="text-align: center">${tool.formatText(':king:')}</td>
             </tr>
             <tr>
-                <td class='row2' style="text-align: center;">:hbd:</td>
-                <td class='row' style="text-align: center">${tool.formatText(':hbd:')}</td>
+                <td class='row2' style="text-align: center;">:chef:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':chef:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:flowers:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':flowers:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:pope:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':pope:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:angel:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':angel:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:evil:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':evil:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:alien:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':alien:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:axe:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':axe:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:cap:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':cap:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:bike:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':bike:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:rock:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':rock:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:smartass:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':smartass:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:clown:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':clown:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:cigar:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':cigar:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:crockett:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':crockett:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:detective:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':detective:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:cowboy:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':cowboy:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:innocent:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':innocent:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:oldtimer:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':oldtimer:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:hmmm:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':hmmm:')}</td>
             </tr>
             <tr>
                 <td class='row2' style="text-align: center;">:book:</td>
                 <td class='row' style="text-align: center">${tool.formatText(':book:')}</td>
             </tr>
             <tr>
-                <td class='row2' style="text-align: center;">:chef:</td>
-                <td class='row' style="text-align: center">${tool.formatText(':chef:')}</td>
+                <td class='row2' style="text-align: center;">:laugh:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':laugh:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:clap:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':clap:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:clap2:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':clap2:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:hooray:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':hooray:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:wall:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':wall:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:judge:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':judge:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:happy2:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':happy2:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:cake:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':cake:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:computer:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':computer:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:hbd:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':hbd:')}</td>
             </tr>
             <tr>
                 <td class='row2' style="text-align: center;">:hi:</td>
@@ -144,44 +264,20 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                 <td class='row' style="text-align: center">${tool.formatText(':beer:')}</td>
             </tr>
             <tr>
-                <td class='row2' style="text-align: center;">:happy2:</td>
-                <td class='row' style="text-align: center">${tool.formatText(':happy2:')}</td>
-            </tr>
-            <tr>
                 <td class='row2' style="text-align: center;">:gathering:</td>
                 <td class='row' style="text-align: center">${tool.formatText(':gathering:')}</td>
-            </tr>
-            <tr>
-                <td class='row2' style="text-align: center;">:flowers:</td>
-                <td class='row' style="text-align: center">${tool.formatText(':flowers:')}</td>
             </tr>
             <tr>
                 <td class='row2' style="text-align: center;">:console:</td>
                 <td class='row' style="text-align: center">${tool.formatText(':console:')}</td>
             </tr>
             <tr>
-                <td class='row2' style="text-align: center;">:cake:</td>
-                <td class='row' style="text-align: center">${tool.formatText(':cake:')}</td>
-            </tr>
-            <tr>
                 <td class='row2' style="text-align: center;">:beer2:</td>
                 <td class='row' style="text-align: center">${tool.formatText(':beer2:')}</td>
             </tr>
             <tr>
-                <td class='row2' style="text-align: center;">:cap:</td>
-                <td class='row' style="text-align: center">${tool.formatText(':cap:')}</td>
-            </tr>
-            <tr>
                 <td class='row2' style="text-align: center;">:chair:</td>
                 <td class='row' style="text-align: center">${tool.formatText(':chair:')}</td>
-            </tr>
-            <tr>
-                <td class='row2' style="text-align: center;">:clap:</td>
-                <td class='row' style="text-align: center">${tool.formatText(':clap:')}</td>
-            </tr>
-            <tr>
-                <td class='row2' style="text-align: center;">:clap2:</td>
-                <td class='row' style="text-align: center">${tool.formatText(':clap2:')}</td>
             </tr>
             <tr>
                 <td class='row2' style="text-align: center;">:drunk:</td>
@@ -228,18 +324,29 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                 <td class='row' style="text-align: center">${tool.formatText(':kissing:')}</td>
             </tr>
             <tr>
-                <td class='row2' style="text-align: center;">:pope:</td>
-                <td class='row' style="text-align: center">${tool.formatText(':pope:')}</td>
-            </tr>
-            <tr>
                 <td class='row2' style="text-align: center;">:dancing:</td>
                 <td class='row' style="text-align: center">${tool.formatText(':dancing:')}</td>
             </tr>
             <tr>
-                <td class='row2' style="text-align: center;">:computer:</td>
-                <td class='row' style="text-align: center">${tool.formatText(':computer:')}</td>
+                <td class='row2' style="text-align: center;">:chop:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':chop:')}</td>
             </tr>
-
+            <tr>
+                <td class='row2' style="text-align: center;">:soldiers:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':soldiers:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:strongbench:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':strongbench:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:trampoline:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':trampoline:')}</td>
+            </tr>
+            <tr>
+                <td class='row2' style="text-align: center;">:mbounce:</td>
+                <td class='row' style="text-align: center">${tool.formatText(':mbounce:')}</td>
+            </tr>
         </table>
 
     <br/><br/>

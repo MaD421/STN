@@ -106,6 +106,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                         </td>
                         <c:set var="i" value='${i+1}'/>
                         <c:if test="${i == 3}">
+                            <c:set var="i" value='0'/>
                             </tr>
                         </c:if>
                     </c:if>

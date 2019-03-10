@@ -92,22 +92,43 @@ public class Tools {
         bbMap.put(":-\\(", "<img src='/img/smilies/weep.gif' class='smile'>");
         bbMap.put("8\\)", "<img src='/img/smilies/cool1.gif' class='smile'>");
         bbMap.put(":king:", "<img src='/img/smilies/king.gif' class='smile'>");
-        bbMap.put(":hbd:", "<img src='/img/smilies/hbd.gif' class='smile'>");
-        bbMap.put(":book:", "<img src='/img/smilies/book.gif' class='smile'>");
         bbMap.put(":chef:", "<img src='/img/smilies/chef.gif' class='smile'>");
+        bbMap.put(":flowers:", "<img src='/img/smilies/flowers.gif' class='smile'>");
+        bbMap.put(":pope:", "<img src='/img/smilies/pope.gif' class='smile'>");
+        bbMap.put(":angel:", "<img src='/img/smilies/angel.gif' class='smile'>");
+        bbMap.put(":evil:", "<img src='/img/smilies/evil.gif' class='smile'>");
+        bbMap.put(":alien:", "<img src='/img/smilies/alien.gif' class='smile'>");
+        bbMap.put(":axe:", "<img src='/img/smilies/axe.gif' class='smile'>");
+        bbMap.put(":cap:", "<img src='/img/smilies/cap.gif' class='smile'>");
+        bbMap.put(":bike:", "<img src='/img/smilies/bike.gif' class='smile'>");
+        bbMap.put(":rock:", "<img src='/img/smilies/rock.gif' class='smile'>");
+        bbMap.put(":smartass:", "<img src='/img/smilies/smartass.gif' class='smile'>");
+        bbMap.put(":clown:", "<img src='/img/smilies/clown.gif' class='smile'>");
+        bbMap.put(":cigar:", "<img src='/img/smilies/cigar.gif' class='smile'>");
+        bbMap.put(":crockett:", "<img src='/img/smilies/crockett.gif' class='smile'>");
+        bbMap.put(":detective:", "<img src='/img/smilies/detective.gif' class='smile'>");
+        bbMap.put(":cowboy:", "<img src='/img/smilies/cowboy.gif' class='smile'>");
+        bbMap.put(":innocent:", "<img src='/img/smilies/innocent.gif' class='smile'>");
+        bbMap.put(":oldtimer:", "<img src='/img/smilies/oldtimer.gif' class='smile'>");
+        bbMap.put(":hmmm:", "<img src='/img/smilies/hmmm.gif' class='smile'>");
+        bbMap.put(":book:", "<img src='/img/smilies/book.gif' class='smile'>");
+        bbMap.put(":laugh:", "<img src='/img/smilies/laugh.gif' class='smile'>");
+        bbMap.put(":clap:", "<img src='/img/smilies/clap.gif' class='smile'>");
+        bbMap.put(":clap2:", "<img src='/img/smilies/clap2.gif' class='smile'>");
+        bbMap.put(":hooray:", "<img src='/img/smilies/hooray.gif' class='smile'>");
+        bbMap.put(":wall:", "<img src='/img/smilies/wall.gif' class='smile'>");
+        bbMap.put(":judge:", "<img src='/img/smilies/judge.gif' class='smile'>");
+        bbMap.put(":happy2:", "<img src='/img/smilies/happy2.gif' class='smile'>");
+        bbMap.put(":cake:", "<img src='/img/smilies/cake.gif' class='smile'>");
+        bbMap.put(":computer:", "<img src='/img/smilies/computer.gif' class='smile'>");
+        bbMap.put(":hbd:", "<img src='/img/smilies/hbd.gif' class='smile'>");
         bbMap.put(":hi:", "<img src='/img/smilies/hi.gif' class='smile'>");
         bbMap.put(":horse:", "<img src='/img/smilies/horse.gif' class='smile'>");
         bbMap.put(":beer:", "<img src='/img/smilies/beer.gif' class='smile'>");
-        bbMap.put(":happy2:", "<img src='/img/smilies/happy2.gif' class='smile'>");
         bbMap.put(":gathering:", "<img src='/img/smilies/gathering.gif' class='smile'>");
-        bbMap.put(":flowers:", "<img src='/img/smilies/flowers.gif' class='smile'>");
         bbMap.put(":console:", "<img src='/img/smilies/console.gif' class='smile'>");
-        bbMap.put(":cake:", "<img src='/img/smilies/cake.gif' class='smile'>");
         bbMap.put(":beer2:", "<img src='/img/smilies/beer2.gif' class='smile'>");
-        bbMap.put(":cap:", "<img src='/img/smilies/cap.gif' class='smile'>");
         bbMap.put(":chair:", "<img src='/img/smilies/chair.gif' class='smile'>");
-        bbMap.put(":clap:", "<img src='/img/smilies/clap.gif' class='smile'>");
-        bbMap.put(":clap2:", "<img src='/img/smilies/clap2.gif' class='smile'>");
         bbMap.put(":drunk:", "<img src='/img/smilies/drunk.gif' class='smile'>");
         bbMap.put(":fishing:", "<img src='/img/smilies/fishing.gif' class='smile'>");
         bbMap.put(":hang:", "<img src='/img/smilies/hang.gif' class='smile'>");
@@ -119,9 +140,12 @@ public class Tools {
         bbMap.put(":rofl:", "<img src='/img/smilies/rofl.gif' class='smile'>");
         bbMap.put(":shoot2:", "<img src='/img/smilies/shoot2.gif' class='smile'>");
         bbMap.put(":kissing:", "<img src='/img/smilies/kissing.gif' class='smile'>");
-        bbMap.put(":pope:", "<img src='/img/smilies/pope.gif' class='smile'>");
         bbMap.put(":dancing:", "<img src='/img/smilies/dancing.gif' class='smile'>");
-        bbMap.put(":computer:", "<img src='/img/smilies/computer.gif' class='smile'>");
+        bbMap.put(":chop:", "<img src='/img/smilies/chop.gif' class='smile'>");
+        bbMap.put(":soldiers:", "<img src='/img/smilies/soldiers.gif' class='smile'>");
+        bbMap.put(":strongbench:", "<img src='/img/smilies/strongbench.gif' class='smile'>");
+        bbMap.put(":trampoline:", "<img src='/img/smilies/trampoline.gif' class='smile'>");
+        bbMap.put(":mbounce:", "<img src='/img/smilies/mbounce.gif' class='smile'>");
 
         //Text
 
@@ -129,7 +153,6 @@ public class Tools {
         bbMap.put("\\[b\\](.+?)\\[/b\\]", "<strong>$1</strong>");
         bbMap.put("\\[i\\](.+?)\\[/i\\]", "<i>$1</i>");
         bbMap.put("\\[u\\](.+?)\\[/u\\]", "<span style='text-decoration:underline;'>$1</span>");
-        bbMap.put("\\[quote\\](.+?)\\[/quote\\]", "<blockquote>$1</blockquote>");
         bbMap.put("\\[center\\](.+?)\\[/center\\]", "<div align='center'>$1</div>");
         bbMap.put("\\[align=(.+?)\\](.+?)\\[/align\\]", "<div style='text-align:$1'>$2</div>");
         bbMap.put("\\[color=(.+?)\\](.+?)\\[/color\\]", "<font color='$1'>$2</font>");
@@ -138,8 +161,11 @@ public class Tools {
         bbMap.put("\\[email\\](.+?)\\[/email\\]", "<a class='ui' href='mailto:$1' style='color: #66ba5b'>$1</a>");
         bbMap.put("\\[url\\](.+?)\\[/url\\]", "<a class='ui' href='$1' style='color: #99ccff' target='_blank'>$1</a>");
         bbMap.put("\\[url=(.+?)\\](.+?)\\[/url\\]", "<a class='ui' href='$1' style='color: #99ccff' target='_blank'>$2</a>");
-        bbMap.put("\\[youtube\\](.+?)\\[/youtube\\]", "<object width='640' height='380'><param name='movie' value='http://www.youtube.com/v/$1'></param><embed src='http://www.youtube.com/v/$1' type='application/x-shockwave-flash' width='640' height='380'></embed></object>");
-        bbMap.put("\\[video\\](.+?)\\[/video\\]", "<video src='$1' />");
+        bbMap.put("\\[youtube\\](.+?)\\[/youtube\\]", "<object width='380' height='300'><param name='movie' value='http://www.youtube.com/v/$1'></param><embed src='http://www.youtube.com/v/$1' type='application/x-shockwave-flash' width='640' height='380'></embed></object>");
+        //bbMap.put("\\[video\\](.+?)\\[/video\\]", "<video src='$1' />");
+        bbMap.put("\\[quote=(.+?)\\]", "<p class='sub'><b>$1 wrote:</b></p><table style='padding-top: 1pt' border=0 cellspacing=0 cellpadding=10><tr><td style='border: 1px white dotted'>");
+        bbMap.put("\\[quote\\]", "<table border=0 cellspacing=0 cellpadding=10><tr><td style='border: 1px white dotted'>");
+        bbMap.put("\\[/quote\\]", "</td></tr></table>");
 
         for (Map.Entry entry: bbMap.entrySet()) {
             html = html.replaceAll(entry.getKey().toString(), entry.getValue().toString());
@@ -206,7 +232,7 @@ public class Tools {
 
             //Generare pagina mijloc(pagina curenta)
             html = html + "<b style='color: gray'>" + (currentPage * itemPerPage - itemPerPage + 1) + " - " + (currentPage * itemPerPage) + "</b>";
-            if(currentPage != totalPages) // Verificare pentru ultimul caracter |
+            if(currentPage != totalPages && totalItems != 0) // Verificare pentru ultimul caracter |
             html = html + spacer;
 
             String temp1 = "";

@@ -1,50 +1,56 @@
 package com.stn.pojo;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.Period;
 import java.util.List;
 
 public class Stats {
+
+    private Timestamp launchDate = java.sql.Timestamp.valueOf("2018-04-19 00:00:00.0");
 
     private int userCount;
     private int facultatiCount;
     private int seriiCount;
     private int grupeCount;
 
+    private int commentsCount;
+    private int topicsCount;
+    private int categoriesCount;
+    private int filesCount;
+    private float commentsPerUser;
+    private float topicsPerUser;
+    private float commentsPerMonth;
+    private float topicsPerMonth;
+
     private int latestUserId;
     private String latestUserUsername;
     private int latestUserUserClass;
     private int latestUserDonor;
 
-    private int students = 0;
-    private int sefDeGrupa = 0;
-    private int vips = 0;
-    private int guestOfHonour = 0;
-    private int moderators = 0;
-    private int administrators = 0;
-    private int owners = 0;
-
-    public void setStats(List<Facultate> facultate, List<Serie> serie, List<Grupa> grupa, List<User> user) {
+    public void setStats(List<Facultate> facultate, List<Serie> serie, List<Grupa> grupa, List<User> user,int commentsCnt,int topicsCnt,int categoriesCnt,int filesCnt) {
         userCount = user.size();
         facultatiCount = facultate.size();
         seriiCount = serie.size();
         grupeCount = grupa.size();
 
+        commentsCount = commentsCnt;
+        topicsCount = topicsCnt;
+        categoriesCount = categoriesCnt;
+        filesCount = filesCnt;
+        commentsPerUser = (float) commentsCount / (float) userCount;
+        topicsPerUser = (float) topicsCount / (float) userCount;
+
+        LocalDate lDay = LocalDate.of(2018, Month.APRIL, 19);
+        LocalDate today = LocalDate.now();
+        Period age = Period.between(lDay, today);
+        int months = age.getMonths();
+
+        commentsPerMonth = (float) commentsCount / (float) months;
+        topicsPerMonth = (float) topicsCount / (float) months;
+
         for(User u : user) {
-            switch (u.getUserClass()) {
-                case 1: students++;
-                    break;
-                case 2: sefDeGrupa++;
-                    break;
-                case 3: vips++;
-                    break;
-                case 4: guestOfHonour++;
-                    break;
-                case 5: moderators++;
-                    break;
-                case 6: administrators++;
-                    break;
-                case 7: owners++;
-                    break;
-            }
 
             latestUserId = u.getId();
             latestUserUsername = u.getUserName();
@@ -54,6 +60,9 @@ public class Stats {
         }
     }
 
+    public Timestamp getLaunchDate() {
+        return launchDate;
+    }
 
     public int getUserCount() {
         return userCount;
@@ -83,35 +92,55 @@ public class Stats {
         return latestUserUserClass;
     }
 
-    public int getStudents() {
-        return students;
-    }
-
-    public int getSefDeGrupa() {
-        return sefDeGrupa;
-    }
-
-    public int getVips() {
-        return vips;
-    }
-
-    public int getGuestOfHonour() {
-        return guestOfHonour;
-    }
-
-    public int getModerators() {
-        return moderators;
-    }
-
-    public int getAdministrators() {
-        return administrators;
-    }
-
-    public int getOwners() {
-        return owners;
-    }
-
     public int getLatestUserDonor() {
         return latestUserDonor;
+    }
+
+    public int getCommentsCount() {
+        return commentsCount;
+    }
+
+    public int getTopicsCount() {
+        return topicsCount;
+    }
+
+    public int getCategoriesCount() {
+        return categoriesCount;
+    }
+
+    public int getFilesCount() {
+        return filesCount;
+    }
+
+    public float getCommentsPerUser() {
+        return commentsPerUser;
+    }
+
+    public float getTopicsPerUser() {
+        return topicsPerUser;
+    }
+
+    public float getCommentsPerMonth() {
+        return commentsPerMonth;
+    }
+
+    public float getTopicsPerMonth() {
+        return topicsPerMonth;
+    }
+
+    public String getCommentsPerUserString() {
+        return String.format("%.2f",commentsPerUser);
+    }
+
+    public String getTopicsPerUserString() {
+        return String.format("%.2f",topicsPerUser);
+    }
+
+    public String getCommentsPerMonthString() {
+        return String.format("%.2f",commentsPerMonth);
+    }
+
+    public String getTopicsPerMonthString() {
+        return String.format("%.2f",topicsPerMonth);
     }
 }

@@ -1,5 +1,7 @@
 package com.stn.pojo;
 
+import java.sql.Timestamp;
+
 public class Topic {
 
     private int topicId;
@@ -9,6 +11,9 @@ public class Topic {
     private int authorClass;
     private String authorName;
     private int totalposts;
+    private int views;
+    private Timestamp lastPostDate;
+    private User lastPoster;
 
     public void setTopicId(int topicId) {
         this.topicId = topicId;
@@ -38,6 +43,18 @@ public class Topic {
         this.totalposts = totalposts;
     }
 
+    public void setViews(int views) {
+        this.views = views;
+    }
+
+    public void setLastPostDate(Timestamp lastPostDate) {
+        this.lastPostDate = lastPostDate;
+    }
+
+    public void setLastPoster(User lastPoster) {
+        this.lastPoster = lastPoster;
+    }
+
     public int getTopicId() {
         return topicId;
     }
@@ -64,5 +81,17 @@ public class Topic {
 
     public int getTotalposts() {
         return totalposts;
+    }
+
+    public int getViews() {
+        return views;
+    }
+
+    public Timestamp getLastPostDate() {
+        return lastPostDate;
+    }
+
+    public User getLastPoster() {
+        return lastPoster;
     }
 }

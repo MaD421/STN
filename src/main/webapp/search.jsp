@@ -32,7 +32,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                         <input type="hidden" name="p" value="1">
                         <input type="text" name="search" style="width: 600px;">
                         <br/><br/>
-                        <input type="submit" value="Search!">
+                        <input type="submit" value="Search!" disabled>
                         </form>
                         <br/><br/>
                     </td>

@@ -4,7 +4,6 @@ import com.stn.pojo.Facultate;
 import com.stn.pojo.Grupa;
 import com.stn.pojo.Serie;
 import com.stn.utils.DBConnection;
-
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;

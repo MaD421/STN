@@ -2,7 +2,6 @@ package com.stn.servlets;
 
 import com.stn.helpers.CommentsHelper;
 import com.stn.helpers.UserHelper;
-import com.stn.pojo.User;
 import com.stn.utils.Validator;
 
 import javax.servlet.ServletException;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.sql.rowset.serial.SerialException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -21,44 +19,29 @@ public class AddComment extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
         HttpSession session=request.getSession();
         PrintWriter out=response.getWriter();
-        int idPost=Integer.parseInt(request.getParameter("idPost"));
-        int page = Integer.parseInt(request.getParameter("page"));
-        int idUser=(int) session.getAttribute("userId");
-        CommentsHelper commHelp=new CommentsHelper();
-        UserHelper userHelper = new UserHelper();
-        String replyee=null;
-        int reply_temp;
-        try {
-            reply_temp = Integer.parseInt(request.getParameter("idReply"));
-        }catch(Exception e){reply_temp=-1;}
-        try {
-            if(reply_temp!=-1)
-            replyee = commHelp.getComment(reply_temp).getCont()+"\n"+commHelp.getComment(reply_temp).getUsername()+" on "+commHelp.getComment(reply_temp).getDop();
-        }catch (Exception e){e.printStackTrace();
-        replyee=null;}
-        String error="";
-        String url="/view_topic.jsp?id="+idPost+"&p="+page;
-        String body=request.getParameter("body");
+
         CommentsHelper commentsHelper=new CommentsHelper();
+        UserHelper userHelper = new UserHelper();
+        String error="";
+        String url="";
+
+        int idPost = Integer.parseInt(request.getParameter("idPost"));
+        int page = Integer.parseInt(request.getParameter("page"));
+        int idUser = (int) session.getAttribute("userId");
+        String body = request.getParameter("body");
+
+        int commentId = 0;
 
         if(Validator.isEmpty(body)){
             error="<br/><b>Nu ai scris nimic</b>";
         }
         else{
-            if(replyee!=null){
-                try {
-                    commentsHelper.addReply(idPost,idUser,body,replyee);
-                    userHelper.updatePosts(idUser);
-                }catch (SQLException|ClassNotFoundException e){
-                    out.println(e);
-                }
-            }
-            else
             if(idPost>0)
             try {
-                commentsHelper.addComment(idPost,idUser,body);
+                commentId = commentsHelper.addComment(idPost,idUser,body);
                 userHelper.updatePosts(idUser);
-            }catch (SQLException|ClassNotFoundException e){
+                url="/view_topic.jsp?id="+idPost+"&p="+page+"#add_comment";
+            } catch (SQLException|ClassNotFoundException e){
                 out.println(e);
             }
         }

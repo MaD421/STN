@@ -70,6 +70,8 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
 
 </table>
 
+<c:remove var="error" scope="session" />
+
 <%@ include file="structure/footer.jsp" %>
 </body>
 </html>

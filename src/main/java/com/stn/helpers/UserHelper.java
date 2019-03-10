@@ -1,10 +1,8 @@
 package com.stn.helpers;
 
 import com.mysql.jdbc.Statement;
-import com.stn.pojo.Aplicatie;
 import com.stn.pojo.User;
 import com.stn.utils.DBConnection;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +11,6 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -284,7 +281,7 @@ public class UserHelper extends DBConnection{
         if(posts < 10)
             name = "Forum N00b";
         else if(posts <= 99 )
-            name = "Forum N00b";
+            name = "Forum User";
         else if(posts <= 499)
             name = "Forum Regular";
         else if(posts <= 999)

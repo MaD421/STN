@@ -1,8 +1,8 @@
 package com.stn.helpers;
 
+import com.mysql.jdbc.Statement;
 import com.stn.pojo.Comments;
 import com.stn.utils.DBConnection;
-
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -72,10 +72,34 @@ public class CommentsHelper extends DBConnection {
 
     }
 
+    public int countTotalComments() throws ClassNotFoundException, SQLException {
+        int cnt = 0;
+
+        query = "SELECT COUNT(*) FROM comments";
+
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
+            preparedStatement = connection.prepareStatement(query);
+            resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()) {
+                cnt = resultSet.getInt(1);
+            }
+        } finally {
+            if (preparedStatement != null)
+                preparedStatement.close();
+            if (connection != null)
+                connection.close();
+        }
+
+        return cnt;
+
+    }
+
     public Comments getComment(Integer idComment)throws ClassNotFoundException, SQLException{
         Comments comm=new Comments();
 
-        query="Select n.Id,Continut,Data,IdPost,IdUser,Username,Class,n.LastEdit from comments n join users u on(n.IdUser=u.Id) where n.Id=?";
+        query="SELECT n.Id,Continut,Data,IdPost,IdUser,Username,Class,n.LastEdit FROM comments n JOIN users u ON n.IdUser = u.Id WHERE n.Id=?";
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
@@ -104,49 +128,33 @@ public class CommentsHelper extends DBConnection {
         return comm;
     }
 
-    public void addComment(Integer idPost, Integer idUser, String body) throws SQLException, ClassNotFoundException {
+    public int addComment(Integer idPost, Integer idUser, String body) throws SQLException, ClassNotFoundException {
+        int last_inserted_id = 0;
         java.sql.Timestamp date = new java.sql.Timestamp((new java.util.Date().getTime()));
-        query = "Insert into comments(IdPost,IdUser,Continut,Data,LastEdit) values(?,?,?,?,?)";
+        query = "INSERT INTO comments(IdPost,IdUser,Continut,Data) VALUES(?,?,?,?)";
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
-            preparedStatement = connection.prepareStatement(query);
+            preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, idPost);
             preparedStatement.setInt(2, idUser);
             preparedStatement.setString(3, body);
             preparedStatement.setTimestamp(4, date);
-            preparedStatement.setTimestamp(5,date);
             preparedStatement.executeUpdate();
+            resultSet = preparedStatement.getGeneratedKeys();
+            resultSet.next();
+            last_inserted_id = resultSet.getInt(1);
         } finally {
             if (preparedStatement != null)
                 preparedStatement.close();
             if (connection != null)
                 connection.close();
         }
-    }
-	
-	public void addReply(Integer idPost, Integer idUser, String body, String replyee) throws SQLException, ClassNotFoundException {
-        java.sql.Timestamp date = new java.sql.Timestamp((new java.util.Date().getTime()));
-        query = "Insert into comments(IdPost,IdUser,Continut,Data) values(?,?,?,?)";
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
-            preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1, idPost);
-            preparedStatement.setInt(2, idUser);
-            preparedStatement.setString(3, "Reply to: [i]"+replyee+"[/i]\n"+body);
-            preparedStatement.setTimestamp(4, date);
-            preparedStatement.executeUpdate();
-        } finally {
-            if (preparedStatement != null)
-                preparedStatement.close();
-            if (connection != null)
-                connection.close();
-        }
+        return last_inserted_id;
     }
 
     public void deleteComment(Integer id) throws SQLException, ClassNotFoundException {
-        query = "Delete from comments where Id=?";
+        query = "DELETE FROM comments WHERE Id=?";
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());
@@ -163,7 +171,7 @@ public class CommentsHelper extends DBConnection {
 
     public void editComment(Integer id, String body) throws SQLException, ClassNotFoundException {
         java.sql.Timestamp date = new java.sql.Timestamp((new java.util.Date().getTime()));
-        query = "Update comments set Continut=?,LastEdit=? where Id=?";
+        query = "UPDATE comments SET Continut=?,LastEdit=? WHERE Id=?";
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(this.getHost(), this.getUser(), this.getPassword());

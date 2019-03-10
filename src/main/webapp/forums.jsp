@@ -24,22 +24,35 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
         <td class="center">
             <table class="black" border="1" style="margin-top: 5pt; width: 90%; border-collapse: collapse;">
                 <tr>
-                    <th style="text-align: left; padding: 3pt; width: 400pt">Pinned Category</th>
+                    <th style="text-align: left; padding: 3pt; width: 320pt">Pinned Category</th>
                     <th style="text-align: center; padding: 3pt">Topics</th>
                     <th style="text-align: center; padding: 3pt">Posts</th>
+                    <th style="text-align: left; padding: 3pt;width: 140pt">Last Post</th>
                 </tr>
                 <c:forEach items="${category}" var="cat">
                     <c:if test="${cat.getPinned() == 1}">
                     <tr>
-                        <td class='row2' style="text-align: left">
+                        <td class='row3' style="text-align: left">
                             <img src="img/cat.png" style="vertical-align: middle">
                             <div style="display: inline-block; vertical-align: middle; margin-left: 3pt">
-                                <b><a class="ui" href="view_forum.jsp?id=${cat.getId()}">${cat.getCategorie()}</a></b><br/>
+                                <b><a class="ui" href="view_forum.jsp?id=${cat.getId()}&p=1">${cat.getCategorie()}</a></b><br/>
                                     ${cat.getDescriere()}
                             </div>
                         </td>
-                        <td class='row2' style="text-align: center">${cat.getTotalTopics()}</td>
-                        <td class='row2' style="text-align: center">${cat.getTotalPosts()}</td>
+                        <td class='row3' style="text-align: right">${cat.getTotalTopics()}</td>
+                        <td class='row3' style="text-align: right">${cat.getTotalPosts()}</td>
+                        <td class='row3' style="text-align: left">
+                            <c:choose>
+                                <c:when test="${cat.getLastPostDate() != null}">
+                                    ${tool.formatDate(cat.getLastPostDate(),2)}<br/>
+                                    by </font><a href='/userdetails.jsp?id=${cat.getLastPoster().getId()}' style="text-decoration: none"><b style="color: ${user.classColor(cat.getLastPoster().getUserClass())}">${e:forHtml(cat.getLastPoster().getUserName())}</b></a><br/>
+                                    in <b><a class="ui" href="view_topic.jsp?id=${cat.getLastTopic().getTopicId()}&p=1">${cat.getLastTopic().getName()}</a></b>
+                                </c:when>
+                                <c:when test="${cat.getLastPostDate() == null}">
+                                    No posts
+                                </c:when>
+                            </c:choose>
+                        </td>
                     </tr>
                     </c:if>
                 </c:forEach>
@@ -51,9 +64,10 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
         <td class="center">
             <table class="black" border="1" style="margin-top: 5pt; width: 90%; border-collapse: collapse;">
                 <tr>
-                    <th style="text-align: left; padding: 3pt; width: 400pt">Category</th>
+                    <th style="text-align: left; padding: 3pt; width: 320pt">Category</th>
                     <th style="text-align: center; padding: 3pt">Topics</th>
                     <th style="text-align: center; padding: 3pt">Posts</th>
+                    <th style="text-align: left; padding: 3pt;width: 140pt">Last Post</th>
                 </tr>
                 <c:forEach items="${category}" var="cat">
                     <c:if test="${cat.getPinned() != 1}">
@@ -61,12 +75,24 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                             <td class='row2' style="text-align: left">
                                 <img src="img/cat.png" style="vertical-align: middle">
                                 <div style="display: inline-block; vertical-align: middle; margin-left: 3pt">
-                                    <b><a class="ui" href="view_forum.jsp?id=${cat.getId()}">${cat.getCategorie()}</a></b><br/>
+                                    <b><a class="ui" href="view_forum.jsp?id=${cat.getId()}&p=1">${cat.getCategorie()}</a></b><br/>
                                         ${cat.getDescriere()}
                                 </div>
                             </td>
-                            <td class='row2' style="text-align: center">${cat.getTotalTopics()}</td>
-                            <td class='row2' style="text-align: center">${cat.getTotalPosts()}</td>
+                            <td class='row2' style="text-align: right">${cat.getTotalTopics()}</td>
+                            <td class='row2' style="text-align: right">${cat.getTotalPosts()}</td>
+                            <td class='row3' style="text-align: left">
+                                <c:choose>
+                                    <c:when test="${cat.getLastPostDate() != null}">
+                                        ${tool.formatDate(cat.getLastPostDate(),2)}<br/>
+                                        by </font><a href='/userdetails.jsp?id=${cat.getLastPoster().getId()}' style="text-decoration: none"><b style="color: ${user.classColor(cat.getLastPoster().getUserClass())}">${e:forHtml(cat.getLastPoster().getUserName())}</b></a><br/>
+                                        in <b><a class="ui" href="view_topic.jsp?id=${cat.getLastTopic().getTopicId()}&p=1">${cat.getLastTopic().getName()}</a></b>
+                                    </c:when>
+                                    <c:when test="${cat.getLastPostDate() == null}">
+                                        No posts
+                                    </c:when>
+                                </c:choose>
+                            </td>
                         </tr>
                     </c:if>
                 </c:forEach>

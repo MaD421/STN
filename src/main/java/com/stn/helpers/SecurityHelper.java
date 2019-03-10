@@ -1,7 +1,6 @@
 package com.stn.helpers;
 
 import com.stn.utils.DBConnection;
-
 import javax.servlet.http.HttpServletRequest;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

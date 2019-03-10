@@ -1,5 +1,7 @@
 package com.stn.pojo;
 
+import java.sql.Timestamp;
+
 public class Category {
 
     private int id;
@@ -11,6 +13,10 @@ public class Category {
     private int idGrupa;
     private int totalTopics;
     private int totalPosts;
+
+    private Timestamp lastPostDate = null;
+    private User lastPoster;
+    private Topic lastTopic;
 
     public Category(int id, int pinned, String categorie, String descriere, int idFacultate, int idSerie, int idGrupa) {
         this.id = id;
@@ -96,5 +102,29 @@ public class Category {
 
     public void setTotalPosts(int totalPosts) {
         this.totalPosts = totalPosts;
+    }
+
+    public Timestamp getLastPostDate() {
+        return lastPostDate;
+    }
+
+    public User getLastPoster() {
+        return lastPoster;
+    }
+
+    public Topic getLastTopic() {
+        return lastTopic;
+    }
+
+    public void setLastPostDate(Timestamp lastPostDate) {
+        this.lastPostDate = lastPostDate;
+    }
+
+    public void setLastPoster(User lastPoster) {
+        this.lastPoster = lastPoster;
+    }
+
+    public void setLastTopic(Topic lastTopic) {
+        this.lastTopic = lastTopic;
     }
 }

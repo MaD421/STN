@@ -3,7 +3,6 @@ package com.stn.helpers;
 import com.stn.pojo.Aplicatie;
 import com.stn.pojo.Invitatie;
 import com.stn.utils.DBConnection;
-
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Timestamp;

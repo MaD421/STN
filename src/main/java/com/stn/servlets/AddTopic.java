@@ -21,7 +21,7 @@ public class AddTopic extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        String url = "view_forum.jsp?id="+request.getParameter("group_id");
+        String url = "view_forum.jsp?id="+request.getParameter("group_id")+"&p=1";
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         String error = "";
@@ -32,13 +32,15 @@ public class AddTopic extends HttpServlet {
         int idUser = (int) session.getAttribute("userId");
         TopicHelper topicHelper = new TopicHelper();
         UserHelper userHelper = new UserHelper();
+        int generatedId = 0;
 
         if (Validator.isEmpty(title,body)) {
             error = "<br/><b style='color: #db5555; padding-top: 5pt'>You must fill all the requiered fields!</b>";
         } else {
             try {
-                topicHelper.addTopic(title,body,idUser,group_id);
+                generatedId = topicHelper.addTopic(title,body,idUser,group_id);
                 userHelper.updatePosts(idUser);
+                url = "view_topic.jsp?id="+generatedId+"&p=1";
             } catch (SQLException | ClassNotFoundException e) {
                 out.println(e);
             }

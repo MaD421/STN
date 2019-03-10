@@ -3,9 +3,6 @@ package com.stn.helpers;
 import com.stn.pojo.Notes;
 import com.stn.pojo.Orar;
 import com.stn.utils.DBConnection;
-
-
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;

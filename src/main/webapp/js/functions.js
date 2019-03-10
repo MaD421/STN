@@ -791,70 +791,7 @@ function addCommentForm(idPost) {
     }
 }
 
-function addReplyForm(idPost,idReply) {
-    var node = document.getElementById('comments');
-    var br = document.createElement("br");
-
-    element = document.getElementById("postrow");
-    if (element != null) {
-        element.outerHTML = "";
-        delete element;
-    } else {
-
-        var form = document.createElement("form");
-        form.setAttribute('method', "post");
-        form.setAttribute('action', "/AddComment");
-        form.setAttribute('id', "temp_form");
-
-        var trow = document.createElement("tr");
-        trow.setAttribute('id', "commrow")
-        var tdata = document.createElement("td");
-        tdata.style.backgroundColor = "#2c2c2c";
-        tdata.style.padding = "8pt";
-        tdata.style.textAlign = "center";
-
-        var inpserie = document.createElement("INPUT");
-        inpserie.setAttribute("type", "hidden");
-        inpserie.setAttribute("name", "idPost");
-        inpserie.setAttribute("value", idPost);
-
-        form.appendChild(inpserie);
-
-        var inprep = document.createElement("INPUT");
-        inprep.setAttribute("type", "hidden");
-        inprep.setAttribute("name", "idReply");
-        inprep.setAttribute("value", idReply);
-
-        form.appendChild(inprep);
-
-        var text = document.createElement("textarea");
-        text.rows = "12";
-        text.cols = "100";
-        text.style.marginTop = "5pt";
-        text.setAttribute("name", "body");
-
-        form.appendChild(text);
-        form.appendChild(br);
-
-        var inp = document.createElement("INPUT");
-        inp.setAttribute("type", "submit");
-        inp.setAttribute("name", "add");
-        inp.setAttribute("value", "Submit");
-        inp.style.marginTop = "5pt";
-
-        form.appendChild(inp);
-
-        tdata.appendChild(form);
-        trow.appendChild(tdata);
-
-        node.parentNode.insertBefore(trow, node.nextSibling);
-
-    }
-}
-
-function editComment(id,idPost) {
-
-    var element = document.getElementById("temp_form_edit");
+function editComment(id,idTopic,page) {
 
     var form = document.createElement("form");
     form.setAttribute('method', "post");
@@ -862,13 +799,9 @@ function editComment(id,idPost) {
     form.setAttribute('id', "temp_form_edit");
 
     var td = document.getElementById("body_" + id);
-    var a_body = document.getElementById("comm_edit_body_" + id);
-    var text = document.getElementById("comm_body_" + id)
+    var text = document.getElementById("content" + id);
 
     if (td != null) {
-        a_body.outerHTML = "";
-        delete a_body;
-
         td.innerHTML = "";
 
         var input = document.createElement("textarea");
@@ -876,23 +809,30 @@ function editComment(id,idPost) {
         input.setAttribute("id", "comm_body_temp");
         input.innerHTML = text.value;
         input.rows = "15";
-        input.cols = "125";
+        input.cols = "105";
 
-        var inpserie = document.createElement("INPUT");
-        inpserie.setAttribute("type", "hidden");
-        inpserie.setAttribute("name", "comm_id_temp");
-        inpserie.setAttribute("id", "comm_id_temp");
-        inpserie.setAttribute("value", id);
+        var inpIdComment = document.createElement("INPUT");
+        inpIdComment.setAttribute("type", "hidden");
+        inpIdComment.setAttribute("name", "comm_id_temp");
+        inpIdComment.setAttribute("id", "comm_id_temp");
+        inpIdComment.setAttribute("value", id);
 
-        var inptype = document.createElement("INPUT");
-        inptype.setAttribute("type", "hidden");
-        inptype.setAttribute("name", "comm_id_post_temp");
-        inptype.setAttribute("id", "comm_id_post_temp");
-        inptype.setAttribute("value", idPost);
+        var inpIdTopic = document.createElement("INPUT");
+        inpIdTopic.setAttribute("type", "hidden");
+        inpIdTopic.setAttribute("name", "idTopic");
+        inpIdTopic.setAttribute("id", "idTopic");
+        inpIdTopic.setAttribute("value", idTopic);
+
+        var inpPage = document.createElement("INPUT");
+        inpPage.setAttribute("type", "hidden");
+        inpPage.setAttribute("name", "page");
+        inpPage.setAttribute("id", "page");
+        inpPage.setAttribute("value", page);
 
         form.appendChild(input);
-        form.appendChild(inpserie);
-        form.appendChild(inptype);
+        form.appendChild(inpIdComment);
+        form.appendChild(inpIdTopic);
+        form.appendChild(inpPage);
 
         var inp = document.createElement("INPUT");
         inp.setAttribute("type", "submit");
@@ -907,15 +847,12 @@ function editComment(id,idPost) {
         form.appendChild(center);
 
         td.appendChild(form);
-
-
     }
-
 }
 
-function deleteComment(id,idPost) {
+function deleteComment(id,idPost,page) {
     if (confirm("Sunteti sigur ca doriti sa stergeti comentariul?") == true)
-        window.location.href = '/EditComment?id=' + id+'&idp='+idPost;
+        window.location.href = '/EditComment?id=' + id+'&idp='+idPost+"&page="+page;
 }
 
 function addNote(id,id_student) {
@@ -932,4 +869,12 @@ function addSystemLoad(load) {
 
     element.appendChild(div);
 
+}
+
+function addQuote(idUser,idContent) {
+    console.log(idUser+"+"+idContent);
+    var username = document.getElementById("username"+idUser).innerText;
+    var content = document.getElementById("content"+idContent).value;
+    var text_area = document.getElementById("comment_body");
+    text_area.value = text_area.value + "[quote=" + username + "]"+ content + "[/quote]\n";
 }

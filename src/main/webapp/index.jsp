@@ -14,13 +14,21 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
 <jsp:useBean id="facultate" class="com.stn.helpers.FacultateHelper"/>
 <jsp:useBean id="stats" class="com.stn.pojo.Stats"/>
 <jsp:useBean id="newsb" class="com.stn.helpers.NewsHelper"/>
+<jsp:useBean id="comments" class="com.stn.helpers.CommentsHelper"/>
+<jsp:useBean id="topics" class="com.stn.helpers.TopicHelper"/>
+<jsp:useBean id="categories" class="com.stn.helpers.CategoryHelper"/>
+<jsp:useBean id="files" class="com.stn.helpers.FilesHelper"/>
 <c:set var="useri" value='${user.getUsers()}'/>
 <c:set var="facultati" value='${facultate.getFacultati()}'/>
 <c:set var="serii" value='${facultate.getSerii()}'/>
 <c:set var="grupe" value='${facultate.getGrupe()}'/>
 <c:set var="newsinfo" value="${newsb.getNews(userInfo.getIdSerie(),3)}"/>
+<c:set var="commentsCnt" value="${comments.countTotalComments()}"/>
+<c:set var="topicsCnt" value="${topics.countTotalTopics()}"/>
+<c:set var="categoriesCnt" value="${categories.countTotalCategories()}"/>
+<c:set var="filesCnt" value="${files.countTotalFiles()}"/>
 
-${stats.setStats(facultati,serii,grupe,useri)}
+${stats.setStats(facultati,serii,grupe,useri,commentsCnt,topicsCnt,categoriesCnt,filesCnt)}
 
 <table class="black" style="margin-top: 5pt; width: 570pt">
 
@@ -132,7 +140,7 @@ ${stats.setStats(facultati,serii,grupe,useri)}
                         <table class="black" border="1" align='center' style="border-collapse: collapse;">
                             <tr>
                                 <td class="row2" style="text-align: left">Online since</td>
-                                <td class="row" style="text-align: left">19-04-2018</td>
+                                <td class="row" style="text-align: left">${tool.formatDate(stats.getLaunchDate(),4)}</td>
                             </tr>
                             <tr>
                                 <td class="row2" style="text-align: left">Users</td>
@@ -164,7 +172,7 @@ ${stats.setStats(facultati,serii,grupe,useri)}
                             </tr>
                             <tr>
                                 <td class="row2" style="text-align: left">Resurse</td>
-                                <td class="row" style="text-align: left">0</td>
+                                <td class="row" style="text-align: left">${stats.getFilesCount()}</td>
                             </tr>
                         </table>
                     </td>
@@ -172,32 +180,32 @@ ${stats.setStats(facultati,serii,grupe,useri)}
                     <td class="center" style="padding-top: 10pt;padding-bottom: 10pt">
                         <table class="black" border="1" align='center' style="border-collapse: collapse;">
                             <tr>
-                                <td class="row2" style="text-align: left">Total forum threads</td>
-                                <td class="row" style="text-align: left; width: 25pt">0</td>
-                            </tr>
-                            <tr>
-                                <td class="row2" style="text-align: left">Forum threads/day</td>
-                                <td class="row" style="text-align: left">0</td>
-                            </tr>
-                            <tr>
-                                <td class="row2" style="text-align: left">Total forum posts</td>
-                                <td class="row" style="text-align: left">0</td>
-                            </tr>
-                            <tr>
-                                <td class="row2" style="text-align: left">Forum posts/day</td>
-                                <td class="row" style="text-align: left">0</td>
-                            </tr>
-                            <tr>
                                 <td class="row2" style="text-align: left">Total categories</td>
-                                <td class="row" style="text-align: left">0</td>
+                                <td class="row" style="text-align: left">${stats.getCategoriesCount()}</td>
+                            </tr>
+                            <tr>
+                                <td class="row2" style="text-align: left">Total forum threads</td>
+                                <td class="row" style="text-align: left; width: 25pt">${stats.getTopicsCount()}</td>
+                            </tr>
+                            <tr>
+                                <td class="row2" style="text-align: left">Forum threads/month</td>
+                                <td class="row" style="text-align: left">${stats.getTopicsPerMonthString()}</td>
                             </tr>
                             <tr>
                                 <td class="row2" style="text-align: left">Forum threads/user</td>
-                                <td class="row" style="text-align: left">0</td>
+                                <td class="row" style="text-align: left">${stats.getTopicsPerUserString()}</td>
+                            </tr>
+                            <tr>
+                                <td class="row2" style="text-align: left">Total forum posts</td>
+                                <td class="row" style="text-align: left">${stats.getCommentsCount()}</td>
+                            </tr>
+                            <tr>
+                                <td class="row2" style="text-align: left">Forum posts/month</td>
+                                <td class="row" style="text-align: left">${stats.getCommentsPerMonthString()}</td>
                             </tr>
                             <tr>
                                 <td class="row2" style="text-align: left">Forum posts/user</td>
-                                <td class="row" style="text-align: left">0</td>
+                                <td class="row" style="text-align: left">${stats.getCommentsPerUserString()}</td>
                             </tr>
 
                         </table>

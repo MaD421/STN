@@ -32,7 +32,7 @@ public class CategoryProcess extends HttpServlet {
         String result = "";
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        String url = "category.jsp";
+        String url = "forums.jsp";
 
         CategoryHelper categoryHelper = new CategoryHelper();
         String type = request.getParameter("type");
