@@ -23,9 +23,9 @@ input, textarea, select {
     border:1pt solid #acaa9e;
 }
 
-input[type=text],input[type=password] {
-    height: 8pt ;
-}
+/*input[type=text],input[type=password] {*/
+    /*height: 8pt ;*/
+/*}*/
 
 .login {
     width: 40pt;
@@ -46,7 +46,7 @@ table.black {
 }
 
 table.menu {
-    margin-top: 3pt;
+    margin-top: 5pt;
     width: 570pt;
     margin-right: auto ;
     margin-left: auto ;
@@ -198,11 +198,6 @@ img.profile {
     height: auto;
 }
 
-img.forum {
-    width: 60%;
-    height: auto;
-}
-
 a.accept:link {
     color: #7f7f7f;
     text-decoration: none;
@@ -245,12 +240,6 @@ a.decline:active {
 
 .smile {
     vertical-align: bottom;
-}
-
-p.sub {
-    margin-bottom: -2pt;
-    margin-top: 0pt;
-    text-align: left;
 }
 
 /* Orar */
