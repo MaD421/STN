@@ -46,7 +46,7 @@ table.black {
 }
 
 table.menu {
-    margin-top: 5pt;
+    margin-top: 3pt;
     width: 570pt;
     margin-right: auto ;
     margin-left: auto ;
@@ -287,4 +287,15 @@ div.loadbar{
     margin-right: auto;
     border: 1.5pt solid #62635f;
     text-align: center;
+}
+
+img.forum {
+    width: 60%;
+    height: auto;
+}
+
+p.sub {
+    margin-bottom: -2pt;
+    margin-top: 0pt;
+    text-align: left;
 }
