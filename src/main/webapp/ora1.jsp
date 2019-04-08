@@ -19,7 +19,7 @@
     <link rel="stylesheet" type="text/css" href="css/orar.css">
     <!--===============================================================================================-->
     <%@ include file="structure/meta.jsp" %>
-    <%@ include file="structure/header.jsp" %>
+    <%@ include file="structure/header_orar.jsp" %>
     <%@ include file="structure/beans.jsp" %>
 
     <jsp:useBean id="notes" class="com.stn.helpers.OrarHelper"/>
