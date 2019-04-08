@@ -3,7 +3,7 @@
 <html>
 <%@ include file="structure/meta.jsp" %>
 <title>Orar grupa</title>
-<%@ include file="structure/header.jsp" %>
+<%@ include file="structure/header_orar.jsp" %>
 </head>
 
 <body>

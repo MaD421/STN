@@ -21,7 +21,7 @@
     <!--===============================================================================================-->
     <%@ include file="structure/meta.jsp" %>
     <title>Adaugare Ora</title>
-    <%@ include file="structure/header.jsp" %>
+    <%@ include file="structure/header_orar.jsp" %>
     <script>
         window.onload = function () {
             var agr = document.getElementById("selector");

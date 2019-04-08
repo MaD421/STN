@@ -20,7 +20,7 @@
 <link rel="stylesheet" type="text/css" href="css/util.css">
 <link rel="stylesheet" type="text/css" href="css/orar.css">
 <!--===============================================================================================-->
-<%@ include file="structure/header.jsp" %>
+<%@ include file="structure/header_orar.jsp" %>
 
 <script src="/js/orar.js"></script>
 </head>
