@@ -59,6 +59,7 @@ public class ParseImage extends HttpServlet {
         String url = "img_to_text.jsp";
         response.setContentType("text/html");
         HttpSession session = request.getSession();
+        String name = "test";
 
         Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
                 "cloud_name", "arashishinga",
@@ -70,6 +71,7 @@ public class ParseImage extends HttpServlet {
             for (Part filePart : fileParts) {
                 String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
                 String[] nameSplit = fileName.split("\\.");
+                name = nameSplit[0];
                 String extension = nameSplit[nameSplit.length - 1].toLowerCase();
                 if (extension.equals("jpg") || extension.equals("png")) {
                     InputStream fileContent = filePart.getInputStream();
@@ -113,7 +115,7 @@ public class ParseImage extends HttpServlet {
                     return;
                 }
             }
-            response.setHeader("Content-disposition", "attachment; filename=" + "test" + ".docx");
+            response.setHeader("Content-disposition", "attachment; filename=" + name + ".docx");
             document.write(response.getOutputStream());
         } else {
             session.setAttribute("error", "Maximum 5 files!");

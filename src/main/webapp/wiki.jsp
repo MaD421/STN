@@ -158,8 +158,8 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                         <td class="row" style="color: #54bbbb">Beta</td>
                     </tr>
                     <tr>
-                        <td class="row2">Advanced Search</td>
-                        <td class="row" style="color: #ff0026">TBD</td>
+                        <td class="row2">Image to Text (OCR)</td>
+                        <td class="row" style="color: #54bbbb">Beta</td>
                     </tr>
                     </tbody>
                     <tfoot>
@@ -169,7 +169,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                     </tfoot>
                 </table>
                 <br/>
-                <p>Site version : 0.3.0</p>
+                <p>Site version : 0.3.1</p>
                 <br/>
             </fieldset><br/>
 
