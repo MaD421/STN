@@ -7,15 +7,10 @@ import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -61,6 +56,10 @@ public class ParseImage extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String url = "img_to_text.jsp";
+        response.setContentType("text/html");
+        HttpSession session = request.getSession();
+
         Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap(
                 "cloud_name", "arashishinga",
                 "api_key", "952573286613164",
@@ -97,7 +96,9 @@ public class ParseImage extends HttpServlet {
                             }
 
                         } else {
-                            request.setAttribute("imageParseError", "The image cannot be parsed!");
+                            session.setAttribute("error", "The image cannot be parsed!");
+                            response.sendRedirect(url);
+                            return;
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -107,15 +108,18 @@ public class ParseImage extends HttpServlet {
                     XWPFParagraph para2 = document.createParagraph();
                     para2.setPageBreak(true);
                 } else {
-                    request.setAttribute("imageParseError", "The image has no jps or png extension!");
+                    session.setAttribute("error", "The image has no jps or png extension!");
+                    response.sendRedirect(url);
+                    return;
                 }
             }
             response.setHeader("Content-disposition", "attachment; filename=" + "test" + ".docx");
             document.write(response.getOutputStream());
         } else {
-            request.setAttribute("imageParseError", "Maximum 5 files!");
-            //Setat eroare :)
-    }
-        request.getRequestDispatcher("/search.jsp").forward(request,response);
+            session.setAttribute("error", "Maximum 5 files!");
+            response.sendRedirect(url);
+            return;
+        }
+        request.getRequestDispatcher("/"+url).forward(request,response);
     }
 }

@@ -26,7 +26,7 @@
     <tr>
      <td class="menubar"><a class="ui2" href="/index.jsp">Home</a></td>
         <td class="menubar"><a class="ui2" href="/files.jsp?p=1">Files</a></td>
-        <td class="menubar"><a class="ui2" href="/search.jsp">Search</a></td>
+        <td class="menubar"><a class="ui2" href="/img_to_text.jsp">Image to text</a></td>
         <td class="menubar"><a class="ui2" href="/forums.jsp">Forums</a></td>
         <td class="menubar"><a class="ui2" href="/donate.jsp">Donate</a></td>
         <td class="menubar"><a class="ui2" href="/wiki.jsp">Wiki</a></td>
