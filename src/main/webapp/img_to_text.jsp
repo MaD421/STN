@@ -16,9 +16,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
 
     <tr>
         <td class="center">
-            <h1 style="color: white">
-                Advanced Search
-            </h1>
+            <h1 style="color: white">Image to Text</h1>
         </td>
     </tr>
 
@@ -30,7 +28,7 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                         <div class="text-center">
                             <form class="form" action="/ParseImage" method="post" id="imgFile-form" enctype="multipart/form-data">
                                 <input type="file" name="imgFile" multiple="multiple" class="text-center center-block file-upload">
-                                <input type="submit" id="imgFile-submit" value="Parse Image"/>
+                                <input type="submit" id="imgFile-submit" value="Submit"/>
                             </form>
 
                         </div>
@@ -39,6 +37,18 @@ ${user.verifyAcces(pageContext.request,pageContext.response)}
                 <tr>
                     <td style="text-align: center; padding-top: 2pt;padding-bottom: 2pt">
                         <b style="color: red; display: inline"> ${sessionScope.error} </b>
+                    </td>
+                </tr>
+            </table>
+
+            <table align="center" style="background-color: #353535;border-style: solid; border-width: 1px;border-color: #62635f;margin-top: 30pt">
+                <tr>
+                    <td class="center" style="padding-left: 8pt;padding-right: 8pt">
+                        <br/>
+                        Acesta este un formular prin care puteti sa convertiti pozele in text.<br/>
+                        Alegeti poza dorita si apasati pe butonul de submit.<br/>
+                        Pozele urcate vor fi convertite utilizand un API de <a class='ui' href='https://ro.wikipedia.org/wiki/Recunoa%C8%99terea_optic%C4%83_a_caracterelor' style='color: #99ccff' target='_blank'>OCR</a> .
+                        <br/><br/>
                     </td>
                 </tr>
             </table>
