@@ -21,8 +21,8 @@ public class DBConnection {
     public DBConnection() {
         this.dbHost = "138.197.189.171";
         this.dbName = "stn";
-        this.dbUser = "bogdantdb";
-        this.dbPassword = "EZdUGvFM4QzysWjE";
+        this.dbUser = "MaD";
+        this.dbPassword = "super123#";
         this.dbPort = "3306";
         this.preparedStatement = null;
         this.connection = null;
